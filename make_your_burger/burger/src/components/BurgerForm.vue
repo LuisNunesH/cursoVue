@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Componente de Mensagem</p>
+        <Message :msg="msg" v-show="msg" />
         <div>
             <form id="burger-form" @submit="createBurger">
                 <div class="input-container">
@@ -36,6 +36,8 @@
     </div>
 </template>
 <script>
+import Message from "./Message.vue";
+let lastBurgerId = null;
 export default {
     name: 'BurgerForm',
     data() {
@@ -52,49 +54,85 @@ export default {
     },
     methods: {
         async getIngredientes() {
-            
+
             const req = await fetch("http://localhost:3000/ingredientes");
             const data = await req.json();
 
-            this.paes= data.paes;
-            this.carnes= data.carnes;
-            this.opcionaisdata= data.opcionais;
+            this.paes = data.paes;
+            this.carnes = data.carnes;
+            this.opcionaisdata = data.opcionais;
 
         },
-        async createBurger(e) {
+        async getBurgers() {
+            try {
+                const response = await fetch("http://localhost:3000/burgers");
+                const burgers = await response.json();
 
+                console.log("burgers", burgers);
+
+                if (burgers.length > 0) {
+                    const lastBurger = burgers[burgers.length - 1];
+                    lastBurgerId = parseInt(lastBurger.id, 10);
+                    console.log("Last Burger ID:", lastBurgerId);
+                } else {
+                    console.log("O array de burgers está vazio.");
+                }
+            } catch (error) {
+                console.error("Erro ao buscar burgers:", error);
+            }
+        },
+        async createBurger(e) {
             e.preventDefault();
 
+            if (lastBurgerId === null) {
+                await this.getBurgers();
+            }
+
             const data = {
+                id: lastBurgerId + 1,
                 nome: this.nome,
                 pao: this.pao,
                 carne: this.carne,
                 opcionais: Array.from(this.opcionais),
                 status: "Solicitado"
-            }
+            };
+
+            lastBurgerId++;
 
             const dataJson = JSON.stringify(data);
 
-            const req = await fetch("http://localhost:3000/burgers", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: dataJson
-            });
+            try {
+                const req = await fetch("http://localhost:3000/burgers", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: dataJson
+                });
 
-            const res = await req.json();
+                const res = await req.json();
 
-            this.nome = "";
-            this.pao = "";
-            this.carne = "";
-            this.opcionais = "";
+                this.msg = `Pedido Nº ${res.id} realizado com sucesso`;
 
+                setTimeout(() => {
+                    this.msg = "";
+                }, 3000);
+
+                this.nome = "";
+                this.pao = "";
+                this.carne = "";
+                this.opcionais = [];
+
+            } catch (error) {
+                console.error("Erro ao criar burger:", error);
+            }
         }
     },
     mounted() {
         this.getIngredientes();
-        console.log("teste")
+    },
+    components: {
+        Message
     }
 }
 </script>

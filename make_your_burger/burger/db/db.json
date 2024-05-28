@@ -82,25 +82,6 @@
     }
   ],
   "burgers": [
-    {
-      "id": "ae46",
-      "nome": "Davi",
-      "pao": "Italiano Branco",
-      "carne": "Veggie burger",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "923e",
-      "nome": "Luis",
-      "pao": "3 Queijos",
-      "carne": "Picanha",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado"
-    }
+
   ]
 }
