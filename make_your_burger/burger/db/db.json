@@ -82,6 +82,27 @@
     }
   ],
   "burgers": [
-
+    {
+      "id": 1,
+      "nome": "Luis",
+      "pao": "Integral",
+      "carne": "Maminha",
+      "opcionais": [
+        "Cebola roxa"
+      ],
+      "status": "Solicitado"
+    },
+    {
+      "id": 2,
+      "nome": "teste",
+      "pao": "Pão Mexicano",
+      "carne": "Alcatra",
+      "opcionais": [
+        "Bacon",
+        "Cheddar",
+        "Tomate"
+      ],
+      "status": "Solicitado"
+    }
   ]
 }
