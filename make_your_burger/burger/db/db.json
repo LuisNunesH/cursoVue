@@ -83,22 +83,43 @@
   ],
   "burgers": [
     {
-      "id": 1,
-      "nome": "Luis",
-      "pao": "Integral",
-      "carne": "Maminha",
-      "opcionais": [
-        "Cebola roxa"
-      ],
+      "id": "3",
+      "nome": "ANA KAROLINA GOMES DEARAUJO",
+      "pao": "Pão Mexicano",
+      "carne": "Veggie burger",
+      "opcionais": [],
       "status": "Solicitado"
     },
     {
-      "id": 2,
+      "id": "4",
+      "nome": "Luis",
+      "pao": "Integral",
+      "carne": "Alcatra",
+      "opcionais": [],
+      "status": "Solicitado"
+    },
+    {
+      "id": "5",
       "nome": "teste",
       "pao": "Pão Mexicano",
+      "carne": "Maminha",
+      "opcionais": [],
+      "status": "Solicitado"
+    },
+    {
+      "id": "6",
+      "nome": "Davi",
+      "pao": "Italiano Branco",
       "carne": "Alcatra",
+      "opcionais": [],
+      "status": "Finalizado"
+    },
+    {
+      "id": "7",
+      "nome": "Davi",
+      "pao": "3 Queijos",
+      "carne": null,
       "opcionais": [
-        "Bacon",
         "Cheddar",
         "Tomate"
       ],

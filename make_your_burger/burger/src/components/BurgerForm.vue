@@ -73,8 +73,8 @@ export default {
                 if (burgers.length > 0) {
                     const lastBurger = burgers[burgers.length - 1];
                     lastBurgerId = parseInt(lastBurger.id, 10);
-                    console.log("Last Burger ID:", lastBurgerId);
                 } else {
+                    lastBurgerId = "0";
                     console.log("O array de burgers está vazio.");
                 }
             } catch (error) {
@@ -88,16 +88,20 @@ export default {
                 await this.getBurgers();
             }
 
+            lastBurgerId = parseInt(lastBurgerId, 10) + 1;
+
+            console.log('lastBurgerId', lastBurgerId)
+
+            lastBurgerId = lastBurgerId.toString();
+
             const data = {
-                id: lastBurgerId + 1,
+                id: lastBurgerId,
                 nome: this.nome,
                 pao: this.pao,
                 carne: this.carne,
                 opcionais: Array.from(this.opcionais),
                 status: "Solicitado"
             };
-
-            lastBurgerId++;
 
             const dataJson = JSON.stringify(data);
 

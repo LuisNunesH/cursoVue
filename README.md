@@ -1,7 +1,10 @@
-# Para rodar o backend
+## Instalação do json-server:
+npm install json-server --save-dev
 
-## no arquivo packaje.json, dentro de scripts, ter o código:
-## "backend": "json-server --watch db/db.json"
+## Para rodar o backend
 
-## no diretório onde está a pasta db rodar o comando:
+### no arquivo packaje.json, dentro de scripts, ter o código:
+### "backend": "json-server --watch db/db.json"
+
+### no diretório onde está a pasta db rodar o comando:
 npm run backend
